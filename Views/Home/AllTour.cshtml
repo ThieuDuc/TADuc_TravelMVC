@@ -1,0 +1,93 @@
+﻿@*@model PagedList.IPagedList<TADuc_TravelMVC.Models.Tour>
+@using PagedList.Mvc;*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .yen {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        gap: 20px;
+    }
+
+    .menu {
+        background-color: #11101d;
+        height: 100vh;
+        padding: 20px;
+    }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+    .yen.menu a:hover {
+        color: #f00;
+    }
+
+    .contenter {
+        padding: 20px;
+        display:flex;
+    }
+
+    .producter {
+        display: grid;
+        display: flex;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+        .producter img {
+            max-width: 168px;
+            height: 112px;
+            padding:5px 20px;
+        }
+
+        .producter h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+</style>
+
+<div class="yen">
+    <div class="menu">
+        <ul>
+            <li><a href="#" onclick="showAll()">Tất Cả  </a></li>
+            <li><input style="border-radius: 5px;" id="menu_search" type="text" placeholder="tim kiem" onkeyup="searchfun()"></li>
+
+        </ul>
+    </div>
+    <div class="contenter" >
+        @*<h2>Sản phẩm của chúng tôi</h2>*@
+        @foreach(var item in Model)
+            {
+            <div class="producter">
+                <div id="sp">
+                    <a href="@Url.Action(" ChiTietTour","Tours", new {id=item.MaTour})">
+                        <img object-fit: cover;" src=@Url.Content("~"+item.HinhAnh.ToString())  alt="" width="168" height="112" />
+                    </a>
+                    <h2>@item.TenTour </h2>
+                </div>
+            </div>
+            }
+        
+    </div>
+    
+</div>

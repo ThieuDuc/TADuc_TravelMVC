@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/css/menu.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @{ var user = Session["user"] as TADuc_TravelMVC.Models.NguoiDung;}
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div style="background-color: rgb(48,0,0);" class="swiper-slide menu">
+                <ul >
+                    @if (user != null)
+                    {
+                        <li> @Html.ActionLink("Trang Quản Trị", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
+
+                        <li>@Html.ActionLink("Danh Mục", "Index", "DanhMucTour")</li>
+                        <li>@Html.ActionLink("Tour", "Index", "Tours")</li>
+                        <li>@Html.ActionLink("Phân Quyền ", "Index", "PhanQuyens")</li>
+                        <li>@Html.ActionLink("Người Dùng  ", "Index", "NguoiDungs")</li>
+                        <li><a style="color:black" href="#">Xin Chào : @user.HoTen</a></li>
+                        <li>@Html.ActionLink("Đăng Xuất   ", "logout", "NguoiDungs")</li>
+
+                    }
+                </ul>
+            </div>
+            <div class="swiper-slide content">
+                <div style="background-color: rgb(88,88,88);" class="menu-button" >
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Trang Quản Trị", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @if (user != null)
+                        {
+                            <li>@Html.ActionLink("Danh Mục", "Index", "DanhMucTour")</li>
+                            <li>@Html.ActionLink("Tour", "Index", "Tours")</li>
+                            <li>@Html.ActionLink("Phân Quyền ", "Index", "PhanQuyens")</li>
+                            <li>@Html.ActionLink("Người Dùng  ", "Index", "NguoiDungs")</li>
+                            <li><a style="color:ghostwhite" href="#">Xin Chào : @user.HoTen</a></li>
+                            <li>@Html.ActionLink("Đăng Xuất   ", "logout", "NguoiDungs")</li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    <!--<div class="container body-content">
+        RenderBody()
+        <hr />-->
+    @*<footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    <!--</div>-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var menuButton = document.querySelector('.menu-button');
+    var openMenu = function () {
+      swiper.slidePrev();
+    };
+    var swiper = new Swiper('.swiper', {
+      slidesPerView: 'auto',
+      initialSlide: 1,
+      resistanceRatio: 0,
+      slideToClickedSlide: true,
+      on: {
+        slideChangeTransitionStart: function () {
+          var slider = this;
+          if (slider.activeIndex === 0) {
+            menuButton.classList.add('cross');
+            // required because of slideToClickedSlide
+            menuButton.removeEventListener('click', openMenu, true);
+          } else {
+            menuButton.classList.remove('cross');
+          }
+        },
+        slideChangeTransitionEnd: function () {
+          var slider = this;
+          if (slider.activeIndex === 1) {
+            menuButton.addEventListener('click', openMenu, true);
+          }
+        },
+      },
+    });
+    </script>
+</body>
+</html>

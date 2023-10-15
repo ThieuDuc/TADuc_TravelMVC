@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.menu {
+    width: 200px;
+    background-color: #8b5757;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    display: block;
+    color: #000;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  a:hover {
+    background-color: #ddd;
+  }
+  
+  

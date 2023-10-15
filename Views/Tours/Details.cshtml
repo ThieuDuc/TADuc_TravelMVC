@@ -1,0 +1,82 @@
+﻿@model TADuc_TravelMVC.Models.Tour
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Tour</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DanhMucTour.DiaDiem)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DanhMucTour.DiaDiem)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TenTour)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenTour)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NgayKhoiHanh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SoNgay)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SoNgay)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.HinhAnh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HinhAnh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Gia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MoTa)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaTour }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

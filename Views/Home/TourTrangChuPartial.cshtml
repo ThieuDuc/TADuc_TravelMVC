@@ -1,0 +1,25 @@
+﻿<section class="tour" style="padding:0;margin:0;">
+    <div class="container">
+        <h1 id="duc3">Tour Sale</h1>
+        <div class="tour-content ">
+            @foreach (var item in Model)
+            {
+                <div class="tour-content-item ">
+                    <div class="tour-content-item-img">
+                        <a href="@Url.Action("ChiTietTour","Tours", new {@id=item.MaTour})">
+                            <img style="width: 100%; height: 100%; object-fit: cover;" src=@Url.Content("~"+item.HinhAnh.ToString()) class="img-responsive" alt="" @*width="250" height="250*@ />
+                        </a>
+                    </div>
+                    <div class="tour-content-item-text">
+                        <h2>@item.TenTour </h2>
+                        <p>@item.MoTa</p>
+                        <button type="submit"><a href="@Url.Action("ChiTietTour","Tours", new {@id=item.MaTour })">Kham Pha </a></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<center>
+    @Html.ActionLink("Xem tất cả...", "AllTour", "Home")
+</center>

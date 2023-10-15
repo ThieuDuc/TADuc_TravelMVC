@@ -1,0 +1,50 @@
+﻿@*@model IEnumerable<TADuc_TravelMVC.Models.DanhMucTour>*@
+@model PagedList.IPagedList< TADuc_TravelMVC.Models.DanhMucTour>
+    @using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "DanhMucTour", FormMethod.Get))
+            {
+               <p>
+                     Địa Điểm  : @Html.TextBox("searchString")<input type="submit" value="Tìm Kiếm " />
+               </p>
+            }
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Địa Điểm 
+        </th>
+        <th>
+            Mô Tả 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaDanhMuc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaDanhMuc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaDanhMuc })
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model,page => Url.Action("Index", new {page}))

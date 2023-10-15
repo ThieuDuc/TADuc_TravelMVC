@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .company-intro {
+        background-color: #f5f5f5;
+        padding: 50px 0;
+    }
+
+        .company-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .company-intro p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .company-intro .btn-primary {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+            .company-intro .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .company-intro img {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+</style>
+<section class="company-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/image/masster.jpg" />
+            </div>
+            <div class="col-md-6">
+                <h2>Giới thiệu công ty du lịch MR LINH'S ADVENTURES TRAVEL</h2>
+                <p>Công ty du lịch MR LINH'S ADVENTURES TRAVEL chuyên cung cấp các tour du lịch trong và ngoài nước với đội ngũ hướng dẫn viên giàu kinh nghiệm.</p>
+                <p>Chúng tôi cam kết đem lại cho quý khách hàng những chuyến du lịch thú vị, đầy ý nghĩa và bổ ích.</p>
+                <a style="text-decoration:none;" href="/Home/AllTour" class="btn-primary">Xem tour du lịch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+

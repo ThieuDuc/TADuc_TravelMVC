@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TADuc_TravelMVC.Models.Tour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhMucTour.DiaDiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoNgay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhMucTour.DiaDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoNgay)
+        </td>
+        <td>
+            <img style="width:70px" src=" @Html.DisplayFor(modelItem => item.HinhAnh)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTour }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTour }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTour })
+        </td>
+    </tr>
+}
+
+</table>

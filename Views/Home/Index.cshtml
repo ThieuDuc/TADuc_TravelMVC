@@ -1,0 +1,170 @@
+﻿@model PagedList.IPagedList<TADuc_TravelMVC.Models.Tour>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+ <head>
+ </head>
+ <body>
+     <section class="ducdeptrai" style="margin:0;padding:0;">
+         <div class="container" id="duc1">
+             <h1>Tour Nhiều Người Đặt </h1>
+         </div>
+         <div style="display: flex; justify-content:space-around;">
+             @foreach (var item in Model)
+             {
+                 <div class="item" style="justify-content: space-around;">
+                     <div class="image">
+                         <a href="@Url.Action("ChiTietTour","Tours", new {@id=item.MaTour})">
+                             <img src=@Html.DisplayFor(modelItem => item.HinhAnh) class="img-responsive" alt="" width="250" height="250" />
+                         </a>
+                     </div>
+                     <div class="text">
+                         <h2>@item.TenTour </h2>
+                         <i class="fa-solid fa-star"></i>
+                         <i class="fa-solid fa-star"></i>
+                         <i class="fa-solid fa-star"></i>
+                         <i class="fa-solid fa-star"></i>
+                         <i class="fa-solid fa-star"></i>
+                         <p>@item.MoTa </p>
+
+                         <P> @*@String.Format("", @item.Gia, "$")*@ @item.Gia</P>
+                         @using (Html.BeginForm("ThemGioHang", "GioHang", new
+                         {
+                             @iMaTour = item.MaTour,@strURL = Request.Url.ToString()
+                         }))
+                         {
+                             <button type="submit" class="btn btn-primary">Dat Tour</button>
+                         }
+                         
+                         @*<button type="submit"><a href="/GioHang/ThemGioHang/@item.MaTour">Đặt Vé</a></button>*@
+                     </div>
+
+                 </div>
+             }
+         </div>
+         <br />
+         <div class="phantrang" style="text-align:center" >
+             Trang: @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber) / @Model.PageCount
+             @Html.PagedListPager(Model, page => Url.Action("Index",
+             new { page }))
+         </div>
+
+     </section>
+     <section class="about">
+         <div class="container">
+             <h1 id="duc2">About</h1>
+             <div class="about-content ">
+                 <div class="about-content-left">
+                     <img src="~/image/about.jpg" />
+                 </div>
+                 <div class="about-content-right">
+                     <h2>Tai sao ban nen chon chung toi</h2>
+                     <p>Chung toi la cong ty hang dau cung cap dich vu lu khach noi dia va quoc te tuyet voi ong mat troi</p>
+                     <button type="submit"><a style="text-decoration:none;" href="/Home/About" >Tim Hieu</a></button>
+                 </div>
+             </div>
+         </div>
+     </section>
+    
+     <section class="sevice" style="display: flex; flex-wrap: wrap; justify-content: space-between;height:300px;" >
+            @*<div class="sevice">*@
+                <div class="sevice-item">
+                    <img style="height:150px;" src="~/image/booking.jpg" />
+                    <p>Đặt Phòng</p>
+                </div>
+                <div class="sevice-item">
+                    <img src="~/image/like.png" />
+                    <p>Dịch Vụ 24/7</p>
+                </div>
+                <div class="sevice-item">
+                    <img src="~/image/book.jpg" />
+                    <p>Sổ Tay </p>
+                </div>
+            @*</div>*@
+        </section>
+
+     <div class="danhsachsanpham">
+         @Html.Action("TourTrangChuPartial", "Home")
+     </div>
+    
+     <section class="review">
+            <div class="container">
+                <h1>Phan Hoi </h1>
+                <div class="review-content">
+                    <div class="review-item">
+                        <div class="review-item-text">
+                            <img src="~/image/remoe.png" />
+                            <p><span>&ldquo;</span>Một chiếc ảnh xinh xinh bên bể bơi vô cực tại điểm du lịch Thanh Hóa siêu hot - Pù Luông<span>&rdquo;</span></p>
+                        </div>
+                        <div class="review-item-img">
+                            <img src="~/image/duc.jpg" />
+                            <div class="review-item-img-text">
+                                <h2>Lê Văn A</h2>
+                                <p>Ngay 06/09/2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-item-text">
+                            <img src="~/image/remoe.png" />
+                            <p><span>&ldquo;</span>Một chiếc ảnh xinh xinh bên bể bơi vô cực tại điểm du lịch Thanh Hóa siêu hot - Pù Luông<span>&rdquo;</span></p>
+                        </div>
+                        <div class="review-item-img">
+                            <img src="~/image/thuy.png" />
+                            <div class="review-item-img-text">
+                                <h2> Nguyễn Thị B </h2>
+                                <p>Ngay 06/09/2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-item-text">
+                            <img src="~/image/remoe.png" />
+                            <p><span>&ldquo;</span>Một chiếc ảnh xinh xinh bên bể bơi vô cực tại điểm du lịch Thanh Hóa siêu hot - Pù Luông<span>&rdquo;</span></p>
+                        </div>
+                        <div class="review-item-img">
+                            <img src="~/image/hi.jpg" />
+                            <div class="review-item-img-text">
+                                <h2> Phạm Văn V</h2>
+                                <p>Ngay 06/09/2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+     @*<section class="signup">
+            <h1 class=".tour h1" id="duc4">Đánh Giá  </h1>
+            <div class="signup-content">
+                <input type="text" placeholder="Nhap email cua ban ">
+                <button>Gui</button>
+            </div>
+        </section>*@
+     <section class="contact">
+        <div class="container">
+            <h1 class=".tour h1" id="duc5">Y Kien  </h1>
+            <div class="contact-content-top">
+                <div class="contact-content-item">
+                    <input type="text" placeholder="Ten">
+                </div>
+                <div class="contact-content-item">
+                    <input type="text" placeholder="Dia Chi">
+                </div>
+                <div class="contact-content-item">
+                    <input type="text" placeholder="email">
+                </div>
+                <div class="contact-content-item">
+                    <input type="text" placeholder="So Dien Thoai">
+                </div>
+            </div>
+            <div class="contact-content-bottom">
+                <textarea placeholder="Noi Dung"></textarea>
+                <button type="submit" >Gui</button>
+            </div>
+        </div>
+     </section>
+
+ </body>
+</html>

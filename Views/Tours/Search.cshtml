@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<TADuc_TravelMVC.Models.Tour>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Search</h2>*@
+@if (Model.Count == 0)
+{
+    <p>No results found.</p>
+}
+else
+{
+    foreach (var product in Model)
+    {
+        <div class="search">
+            <div class="search-image">
+                <img src="  @Html.DisplayFor(modelItem => product.HinhAnh)" />
+            </div>
+            <div class="search-details">
+                <h2>@Html.DisplayFor(modelItem => product.TenTour)</h2>
+                <p>@Html.DisplayFor(modelItem => product.MoTa)</p>
+                <p>Thông tin :</p>
+                <ul>
+                    <li> Ngày Khởi Hành:@Html.DisplayFor(modelitem => product.NgayKhoiHanh)</li>
+                    <li> Giá :  @Html.DisplayFor(modelItem => product.Gia) $</li>
+                </ul>
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new
+                {
+                    @iMaTour = product.MaTour,
+                    @strURL = Request.Url.ToString()
+                }))
+                {
+                    <button type="submit" class="btn btn-primary">Đặt Tour</button>
+                }
+
+            </div>
+        </div>
+    }
+}
+<center>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Search",
+    new { page }))
+</center>
+<style>
+    .search {
+        display: flex;
+        background-color: #EEEEEE;
+    }
+
+    .search-image {
+        width: 50%;
+    }
+
+    .search-image img {
+        width: 50%;
+        height: auto;
+        padding: 20px 20px;
+    }
+
+    .search-details {
+        width: 50%;
+        padding-left: 5px;
+    }
+</style>
+
